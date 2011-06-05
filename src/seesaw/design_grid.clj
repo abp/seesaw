@@ -40,13 +40,19 @@
         l (DesignGridLayout. p)]
     (su/apply-options p opts (merge sc/default-options dgp-options))))
 
-(defn add [p & args]
-  (.add p (into-array javax.swing.JComponent (map #(sc/to-widget % true) args))))
-
+(defn add
+	([p] (.empty p))
+	([p & args]
+		(cond
+			(number? (first args)) (.empty p (first args))
+			(number? (second args)) (.add p (first args) (second args))
+			:else (.add p (into-array javax.swing.JComponent (map #(sc/to-widget % true) (flatten args)))))))
+	
 (defn row [p] (.row p))
 (defn empty-row [p] (.emptyRow p))
 (defn center [p] (.center p))
 (defn grid 
+	([p] (.grid p))
   ([p w] (.grid p (sc/to-widget w true)))
   ([p w i] (.grid p (sc/to-widget w true) i)))
 

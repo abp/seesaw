@@ -8,7 +8,7 @@
 ;   the terms of this license.
 ;   You must not remove this notice, or any other, from this software.
 
-(ns seesaw.examples.design-grid
+(ns seesaw.examples.design-grid-address-book
   (:use [seesaw core design-grid]))
 
 ; See http://designgridlayout.java.net/examples.html 
